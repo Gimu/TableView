@@ -747,6 +747,10 @@ public class TableView extends FrameLayout implements ITableView {
 
         SavedState savedState = (SavedState) state;
         super.onRestoreInstanceState(savedState.getSuperState());
+        
+        if (mPreferencesHandler == null) {
+            mPreferencesHandler = new PreferencesHandler(this);
+        }
 
         // Reload the preferences
         mPreferencesHandler.loadPreferences(savedState.preferences);
